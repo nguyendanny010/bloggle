@@ -1,7 +1,5 @@
 package bloggle.api.service;
 
-import java.util.List;
-
 import bloggle.api.payload.PostDto;
 import bloggle.api.payload.PostResponse;
 
