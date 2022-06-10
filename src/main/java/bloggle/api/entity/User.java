@@ -56,7 +56,7 @@ public class User {
         return this.username;
     }
 
-    public void setUserName(String username) {
+    public void setUsername(String username) {
         this.username = username;
     }
 
@@ -78,6 +78,9 @@ public class User {
 
     public Set<Role> getRoles(){
         return this.roles;
+    }
+    public void setRoles(Set<Role> roles){
+        this.roles = roles;
     }
     
 }

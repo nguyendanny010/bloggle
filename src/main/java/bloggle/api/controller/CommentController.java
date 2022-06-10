@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import bloggle.api.payload.CommentDto;
 import bloggle.api.service.CommentService;
+import io.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping("/api/")
@@ -28,22 +29,26 @@ public class CommentController {
         this.commentService = commentService;
     }
 
+    @ApiOperation(value = "Create comment")
     @PostMapping("/posts/{postId}/comments")
     public ResponseEntity<CommentDto> createComment(@PathVariable(value = "postId") long postId,@Valid @RequestBody CommentDto commentDto){
         return new ResponseEntity<>(commentService.createComment(postId, commentDto), HttpStatus.CREATED);
     }
 
+    @ApiOperation(value = "Get Comment by post id")
     @GetMapping("/posts/{postId}/comments")
     public List<CommentDto> getCommentsByPostId(@PathVariable(value = "postId") Long postId){
         return commentService.getCommentsByPostId(postId);
     }
 
+    @ApiOperation(value = "Get Comment by comment id")
     @GetMapping("/posts/{postId}/comments/{id}")
     public ResponseEntity<CommentDto> getCommentById(@PathVariable(value = "postId") Long postId, @PathVariable(value = "id") Long commentId){
         CommentDto commentDto = commentService.getCommentById(postId, commentId);
         return new ResponseEntity<>(commentDto, HttpStatus.OK);
     }
 
+    @ApiOperation(value = "Update comment")
     @PutMapping("/posts/{postId}/comments/{id}")
     public ResponseEntity<CommentDto> updateComment(@PathVariable(value = "postId") long postId,
                                                     @PathVariable(value = "id") long commentId,
@@ -53,6 +58,7 @@ public class CommentController {
 
     }
 
+    @ApiOperation(value = "Delete comment")
     @DeleteMapping("/posts/{postId}/comments/{id}")
     public ResponseEntity<String> deleteComment(@PathVariable(value = "postId") long postId, @PathVariable(value = "id") long commentId){
         commentService.deleteComment(postId, commentId);

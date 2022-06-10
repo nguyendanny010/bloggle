@@ -1,6 +1,5 @@
 package bloggle.api.entity;
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
